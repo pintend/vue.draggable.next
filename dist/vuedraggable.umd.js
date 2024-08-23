@@ -4596,12 +4596,13 @@ function computeNodes(_ref) {
       getKey = _ref.getKey;
   var normalizedList = realList || [];
 
-  var _map = ["header", "footer"].map(function (name) {
+  var _map = ["empty", "header", "footer"].map(function (name) {
     return getSlot($slots, name);
   }),
-      _map2 = _slicedToArray(_map, 2),
-      header = _map2[0],
-      footer = _map2[1];
+      _map2 = _slicedToArray(_map, 3),
+      empty = _map2[0],
+      header = _map2[1],
+      footer = _map2[2];
 
   var item = $slots.item;
 
@@ -4629,7 +4630,7 @@ function computeNodes(_ref) {
   return {
     header: header,
     footer: footer,
-    default: defaultNodes
+    default: defaultNodes.length > 0 || empty.length === 0 ? defaultNodes : empty
   };
 }
 
@@ -4893,6 +4894,7 @@ var draggableComponent = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["d
     spliceList: function spliceList() {
       var _arguments = arguments;
 
+      // @ts-ignore
       var spliceList = function spliceList(list) {
         return list.splice.apply(list, _toConsumableArray(_arguments));
       };
@@ -4946,7 +4948,8 @@ var draggableComponent = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["d
       }
 
       removeNode(evt.item);
-      var newIndex = this.getVmIndexFromDomIndex(evt.newIndex);
+      var newIndex = this.getVmIndexFromDomIndex(evt.newIndex); // @ts-ignore
+
       this.spliceList(newIndex, 0, element);
       var added = {
         element: element,
@@ -4966,7 +4969,8 @@ var draggableComponent = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["d
 
       var _this$context = this.context,
           oldIndex = _this$context.index,
-          element = _this$context.element;
+          element = _this$context.element; // @ts-ignore
+
       this.spliceList(oldIndex, 1);
       var removed = {
         element: element,
