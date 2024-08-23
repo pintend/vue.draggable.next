@@ -1,3 +1,5 @@
+NOTE: to build, run `export NODE_OPTIONS=--openssl-legacy-provider` before `npm run build`
+
 <p align="center"><img width="140"src="https://raw.githubusercontent.com/SortableJS/Vue.Draggable/master/logo.svg?sanitize=true"></p>
 <h1 align="center">vue.draggable.next</h1>
 
